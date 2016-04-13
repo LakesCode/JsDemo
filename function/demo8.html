@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+    <script>
+        function app(x, y) {
+            if (x > y) {
+                return x;
+            }
+            else if (x == y) {
+                return null;
+            }
+            else {
+                return y;
+            }
+        }
+        //调用函数，实现下面三组数中，返回较大值。
+        document.write(" 5 和 4 的较大值是:" + app(5, 4) + "<br>");
+        document.write(" 6 和 3 的较大值是:" + app(6, 3) + "<br>");
+        document.write(" 7 和 7 的较大值是:" + app(7, 7) + "<br>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
