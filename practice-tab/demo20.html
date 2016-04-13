@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡</title>
+    <style type="text/css">
+        /* CSS样式制作 */
+        * {
+            margin: 0;
+            padding: 0;
+            font: 12px normal;
+            font-family: 微软雅黑;
+        }
+
+        #selectCards {
+            width: 300px;
+            margin: 5px 8px;
+        }
+
+        #selectCards ul {
+            list-style: none;
+            margin-bottom: -2px;
+        }
+
+        #selectCards > ul li {
+            display: inline-block;
+            padding: 5px 13px;
+            margin-left: 1px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-bottom: none;
+        }
+
+        #selectCards > ul li.active {
+            border-top: 2px solid saddlebrown;
+            border-bottom: 2px solid #fff;
+        }
+
+        #selectCards div {
+            padding: 6px 0px 30px;
+            border: 1px solid #336699;
+            border-top: 2px solid saddlebrown;
+            display: none;
+        }
+
+        #selectCards div.show {
+            display: block;
+        }
+
+        #selectCards div ul li {
+            padding: 4px 6px;
+        }
+
+        #selectCards a {
+            text-decoration: none;
+            color: black;
+
+        }
+    </style>
+    <script type="text/javascript">
+        // JS实现选项卡切换
+        window.onload = function () {
+            var oUl = document.getElementById("selectCards").getElementsByTagName("ul")[0];
+            var oli = oUl.getElementsByTagName("li");
+            var div = document.getElementById("selectCards").getElementsByTagName("div");
+            for (var i = 0; i < oli.length; i++) {
+                oli[i].index = i;
+                oli[i].onclick = function () {
+                    for (var i = 0; i < oli.length; i++) {
+                        oli[i].className = "";
+                    }
+                    this.className = "active";
+                    for (var j = 0; j < div.length; j++) {
+                        div[j].className = "";
+                    }
+                    div[this.index].className = "show";
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+<!-- HTML页面布局 -->
+<div id="selectCards">
+    <ul>
+        <li class="active">房产</li>
+        <li>家居</li>
+        <li>二手房</li>
+    </ul>
+    <!-- 把每个链接设置为无序列表以自适应宽度 -->
+    <div class="show">
+        <ul>
+            <li><a href="#">275万购昌平邻铁三居 总价20万买一居</a></li>
+            <li><a href="#">200万内购五环三居 140万安家东三环</a></li>
+            <li><a href="#">北京首现零首付楼盘 53万购东5环50平</a></li>
+            <li><a href="#">京楼盘直降5000 中信府 公园楼王现房</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#">40平出租屋大改造 美少女的混搭小窝</a></li>
+            <li><a href="#">经典清新简欧爱家 90平老房焕发新生</a></li>
+            <li><a href="#">新中式的酷色温情 66平撞色活泼家居</a></li>
+            <li><a href="#">瓷砖就像选好老婆 卫生间烟道的设计</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li><a href="#">通州豪华3居260万 二环稀缺2居250w甩</a></li>
+            <li><a href="#">西3环通透2居290万 130万2居限量抢购</a></li>
+            <li><a href="#">黄城根小学学区仅260万 121平70万抛!</a></li>
+            <li><a href="#">独家别墅280万 苏州桥2居优惠价248万</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+
