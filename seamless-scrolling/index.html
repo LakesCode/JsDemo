@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lalala</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul,li{list-style: none}
+        .list_lh{height:30px;overflow:hidden;}
+    </style>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        (function($){
+            $.fn.myScroll = function(options){
+                //默认配置
+                var defaults = {
+                    speed:40,  //滚动速度,值越大速度越慢
+                    rowHeight:24 //每行的高度
+                };
+
+                var opts = $.extend({}, defaults, options),intId = [];
+
+                function marquee(obj, step){
+
+                    obj.find("ul").animate({
+                        marginTop: '-=1'
+                    },0,function(){
+                        var s = Math.abs(parseInt($(this).css("margin-top")));
+                        if(s >= step){
+                            $(this).find("li").slice(0, 1).appendTo($(this));
+                            $(this).css("margin-top", 0);
+                        }
+                    });
+                }
+
+                this.each(function(i){
+                    var sh = opts["rowHeight"],speed = opts["speed"],_this = $(this);
+                    intId[i] = setInterval(function(){
+                        if(_this.find("ul").height()<=_this.height()){
+                            clearInterval(intId[i]);
+                        }else{
+                            marquee(_this, sh);
+                        }
+                    }, speed);
+
+                    _this.hover(function(){
+                        clearInterval(intId[i]);
+                    },function(){
+                        intId[i] = setInterval(function(){
+                            if(_this.find("ul").height()<=_this.height()){
+                                clearInterval(intId[i]);
+                            }else{
+                                marquee(_this, sh);
+                            }
+                        }, speed);
+                    });
+
+                });
+            }
+        })(jQuery);
+
+        $(document).ready(function(){
+            $("div.list_lh").myScroll({
+                speed:40, //数值越大，速度越慢
+                rowHeight:68 //li的高度
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="bcon">
+    <h2><b>翻滚吧牛宝宝</b></h2>
+    <div class="list_lh">
+        <ul>
+            <li>UI库 angular-bootstrap等辅助开发UI组件</li>
+            <li>UI库 angular-bootstrap等辅助开发UI组件111</li>
+            <li>UI库 angular-bootstrap等辅助开发UI组件222</li>
+            <li>UI库 angular-bootstrap等辅助开发UI组件333</li>
+            <li>UI库 angular-bootstrap等辅助开发UI组件444</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
