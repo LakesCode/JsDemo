@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function f() {
+            window.a = [];
+            window.b = [];
+            var i = -3;
+
+            window.a[0] = function () {
+                console.log(i);
+            };
+
+            for (var i = 0; i < 10; i++) {
+
+                window.a[i] = function () {
+                    i++;
+                    console.log(i);
+                };
+
+                window.b[i] = h(i);//产生多个闭包
+
+            }
+
+        }
+
+        function h(i) {
+
+            return function () {
+                i++;
+                console.log(i);
+            }
+
+        }
+
+        f(); //产生一个闭包
+
+        alert(a[1]());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
