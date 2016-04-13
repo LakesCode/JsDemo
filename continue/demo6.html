@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>继续循环continue</title>
+    <script>
+        var mynum = new Array(70, 80, 66, 90, 50, 100, 89); //定义数组mymun并赋值
+        var i;
+        for (i=0;i < mynum.length;i++) {
+            if (mynum[i] < 60) {
+                document.write("成绩" + "不及格，不输出" + "<br>");
+                continue;
+            }
+            document.write("成绩" + mynum[i] + "及格，继续循环" + "<br>");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
