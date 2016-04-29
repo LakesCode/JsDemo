@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="js/jquery.min.js"></script>
+    <title>菜单</title>
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: "Microsoft Yahei";
+        }
+        .fl{
+            float: left;
+        }
+        .fr{
+            float: right;
+        }
+        .m-logo-box{
+            height: 70px;
+        }
+        .m-logo{
+            background: #ffa500;
+            width: 80%;
+            height: 70px;
+        }
+        .m-nav-icon{
+            background: #08c;
+            width: 20%;
+            height: 70px;
+        }
+        .m-nav{
+            position: relative;
+        }
+        .m-nav ul{
+            position: absolute;
+            width: 30%;
+            right: 0;
+            top: 70px;
+            opacity: .8;
+            z-index: 1;
+            list-style: none;
+        }
+        .m-nav ul li{
+            position: relative;
+        }
+        .m-nav ul li a{
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            background: #0082ca;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .m-nav ul li a:hover{
+            background: #ff8d00;
+        }
+        .m-nav ul li .m-sub-menu{
+            position: absolute;
+            right: 100%;
+            width: 100%;
+            z-index: 1;
+            top: 0;
+        }
+        .m-nav ul li .m-sub-menu li{
+            position: relative;
+        }
+        .m-nav ul li .m-sub-menu li a{
+            background: #0082ca;
+        }
+    </style>
+</head>
+<body>
+<div class="m-logo-box cf">
+    <a href="###" class="fl m-logo"></a>
+    <span class="m-nav-icon fr"></span>
+    <div class="m-nav cf">
+        <ul id="m-nav" style="display: none;">
+            <li><a href="###" class="on">首页</a></li>
+            <li class="mSubList">
+                <a href="###">关于我们</a>
+                <ul class="m-sub-menu" style="display: none">
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                    <li><a href="###">公司简介</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="###">新闻中心</a>
+            <li class="mSubList">
+                <a href="###">关于我们</a>
+                <ul class="m-sub-menu" style="display: none">
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                    <li><a href="###">新闻中心</a></li>
+                </ul>
+            </li>
+            </li>
+            <li><a href="###">新闻中心</a></li>
+            <li><a href="###">新闻中心</a></li>
+            <li><a href="###">联系我们</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        var iconNav = $('.m-logo-box');
+        iconNav.on('click', function (e) {
+            e.stopPropagation();
+        }).find('>span').on('click', function () {
+                    $("#m-nav").slideDown();
+                });
+        $(document).on('click', function () {
+            $("#m-nav").slideUp();
+        });
+        $("#m-nav li").siblings(".mSubList").on("click", function(){
+            $(this).find(".m-sub-menu").slideDown().eq($(this).index()).slideUp();
+        });
+        $(document).on('click', function () {
+            $(".m-sub-menu").slideUp();
+        });
+    })
+</script>
+</body>
+</html>
